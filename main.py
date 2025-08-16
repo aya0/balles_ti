@@ -1,9 +1,32 @@
 import pygame
 import math 
+import Balls
+
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
+clock = pygame.time.Clock()
 running = True
+
+#arc parameters 
+arc_rect = (300 , 200 , 200 , 200)
+start_angle = 0
+end_angle = 3*math.pi/2
+
+
+#Ball Lis 
+ballsList =[]
+ballsList.append(Balls.Balls())
+
+# if the ball go out hor right (300 +200) left(300 -200) then it's out side the arc  ---> make new ball
+# also i can cheak if the vert up(200 +200) down (200+200) then it's out side the arc ---> make new ball 
+# i just need to cheack the vertical side becuas the ball always will fall down  
+
+#1- i need to bulid ball to move in side the arc 
+#2- every time this ball fall donw the number of ball will increase by one 
+#3- balles must move bassed on pysicis rulls
+
+
 
 while running:
     for event in pygame.event.get():
@@ -11,8 +34,16 @@ while running:
             running = False
 
     screen.fill((0, 0, 0))  # Fill background black
-    # Draw a arc 
-    pygame.draw.arc(screen , (250,250,250) , (300, 200, 200, 200) , 0 , 3*math.pi/2 , 2)
-    pygame.display.flip()  # Update screen
+    
+    pygame.draw.arc(screen, (250, 250, 250), arc_rect, start_angle, end_angle, 2)
+    
+    for ball in ballsList:
+        ball.update(ballsList , arc_rect)
+        pygame.draw.circle(screen , ball.color , (int(ball.x) , int(ball.y)) , ball.radius)
+    
+    pygame.display.flip()
+    clock.tick(60)
+        
+
 
 pygame.quit()
