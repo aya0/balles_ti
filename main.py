@@ -3,6 +3,16 @@ import math
 import Balls
 
 
+ #Ruls 
+# if the ball go out hor right (300 +200) left(300 -200) then it's out side the arc  ---> make new ball
+# also i can cheak if the vert up(200 +200) down (200+200) then it's out side the arc ---> make new ball 
+# i just need to cheack the vertical side becuas the ball always will fall down  
+
+#1- i need to bulid ball to move in side the arc 
+#2- every time this ball fall donw the number of ball will increase by one 
+#3- balles must move bassed on pysicis rulls
+
+
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
 clock = pygame.time.Clock()
@@ -17,15 +27,6 @@ end_angle = 3*math.pi/2
 #Ball Lis 
 ballsList =[]
 ballsList.append(Balls.Balls())
-
-# if the ball go out hor right (300 +200) left(300 -200) then it's out side the arc  ---> make new ball
-# also i can cheak if the vert up(200 +200) down (200+200) then it's out side the arc ---> make new ball 
-# i just need to cheack the vertical side becuas the ball always will fall down  
-
-#1- i need to bulid ball to move in side the arc 
-#2- every time this ball fall donw the number of ball will increase by one 
-#3- balles must move bassed on pysicis rulls
-
 
 
 while running:
