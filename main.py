@@ -1,6 +1,7 @@
 import pygame
 import math 
 import Balls
+import Arc
 
 
  #Ruls 
@@ -19,14 +20,15 @@ clock = pygame.time.Clock()
 running = True
 
 #arc parameters 
-arc_rect = (300 , 200 , 200 , 200)
+arc_rect1 = Arc. ArcRect(400 , 200 , 200 ,200)
+arc_rect = (400 , 200 , 200 ,200)
 start_angle = 0
-end_angle = 3*math.pi/2
+end_angle = 5*math.pi/3.     #300 degrees
 
 
 #Ball Lis 
 ballsList =[]
-ballsList.append(Balls.Balls())
+ballsList.append(Balls.Balls(arc_rect1))
 
 
 while running:
@@ -36,7 +38,7 @@ while running:
 
     screen.fill((0, 0, 0))  # Fill background black
     
-    pygame.draw.arc(screen, (250, 250, 250), arc_rect, start_angle, end_angle, 2)
+    pygame.draw.arc(screen, (250, 250, 250), arc_rect, start_angle, end_angle, 5)
     
     for ball in ballsList:
         ball.update(ballsList , arc_rect)
